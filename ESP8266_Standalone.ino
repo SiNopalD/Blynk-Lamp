@@ -10,12 +10,12 @@
 
 // Kamu bisa menerima token autentikasi di Aplikasi Blynk atau Gmail.
 // Pergi ke pengaturan project (icon nut).
-char auth[] = "_1QzT1tAH5RHcuZYAEB9G4sZ-xqr7SUN";
+char auth[] = "your token blynk";
 
 // Wifi Kredensial kita.
 // Set kata sandi di dalam "" untuk membuka jaringan.
-char ssid[] = "AndroidA";
-char pass[] = "00000000";
+char ssid[] = "nama ssid";
+char pass[] = "sandi wifi";
 
 void setup()
 {
