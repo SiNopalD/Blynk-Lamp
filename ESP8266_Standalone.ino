@@ -10,26 +10,31 @@
 
 // Kamu bisa menerima token autentikasi di Aplikasi Blynk atau Gmail.
 // Pergi ke pengaturan project (icon nut).
-char auth[] = "your token blynk";
-
-// Wifi Kredensial kita.
-// Set kata sandi di dalam "" untuk membuka jaringan.
-char ssid[] = "nama ssid";
-char pass[] = "sandi wifi";
+char auth[] = "Your Blynk Token";
 
 void setup()
 {
-  // Konsol Debug
-  //WiFiManager wifiManager;
-  //wifiManager.autoConnect("Opal");
-  //WiFiManagerParameter custom_blynk_token("Blynk", "blynk token", auth, 33);
-  //wifiManager.addParameter(&custom_blynk_token);
-  //Blynk.config(custom_blynk_token.getValue());
-
-
+  // WiFi Manager
+  WiFiManager wifiManager;
+  wifiManager.autoConnect("Opal");
+  WiFiManagerParameter custom_blynk_token("Blynk", "blynk token", auth, 33);
+  wifiManager.addParameter(&custom_blynk_token);
+  Blynk.config(custom_blynk_token.getValue());
   Serial.begin(9600);
+  String ssid = wifiManager.getWiFiSSID();
+  String pass = wifiManager.getWiFiPass();
+  int n = ssid.length();
+  int o = pass.length();
+  char char_ssid[n+1];
+  char char_pass[o+1];
+  strcpy(char_ssid, ssid.c_str());
+  strcpy(char_pass, pass.c_str());
 
-  Blynk.begin(auth, ssid, pass);
+  Serial.println(ssid);
+  Serial.println(pass);
+
+  Blynk.begin(auth, char_ssid, char_pass);
+  //  Blynk.begin(auth);
 }
 
 void loop()
